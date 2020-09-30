@@ -1,0 +1,19 @@
+{
+  "name": "data_storage_web_app",
+  "version": "1.0.0",
+  "description": "A simple data storage web application using micro-services architecture",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/B0ySetsF1re/Data_Storage_Web_App.git"
+  },
+  "author": "B0ySetsF1re",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/B0ySetsF1re/Data_Storage_Web_App/issues"
+  },
+  "homepage": "https://github.com/B0ySetsF1re/Data_Storage_Web_App#readme"
+}
