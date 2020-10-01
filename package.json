@@ -17,9 +17,9 @@
   "author": "B0ySetsF1re",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/B0ySetsF1re/Data_Storage_Web_App/issues"
+    "url": "https://github.com/B0ySetsF1re/data-storage-web-app-client/issues"
   },
-  "homepage": "https://github.com/B0ySetsF1re/Data_Storage_Web_App#readme",
+  "homepage": "https://github.com/B0ySetsF1re/data-storage-web-app-client#readme",
   "private": true,
   "dependencies": {
     "@angular/animations": "~10.1.4",
