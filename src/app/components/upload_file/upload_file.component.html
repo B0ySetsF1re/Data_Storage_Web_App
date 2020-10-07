@@ -1,0 +1,31 @@
+<section class="jumbotron text-center">
+  <div class="container">
+    <h4>Upload your file here</h4>
+
+    <div class="row justify-content-center m-4">
+      <form method="POST" action="http://localhost:3000/api/data-storage/upload-file" enctype="multipart/form-data">
+        <div class="form-group row">
+
+          <div class="input-group mb-3 col">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Upload</span>
+            </div>
+            <div class="custom-file">
+              <input type="file" name="upload" class="custom-file-input">
+              <label class="custom-file-label">Choose file...</label>
+            </div>
+            <div class="input-group-append">
+              <button type="submit" class="btn btn btn-outline-danger">Submit</button>
+            </div>
+          </div>
+
+        </div>
+      </form>
+    </div>
+
+    <!--<p>
+      <a href="#" class="btn btn-primary my-2 mr-2">Main call to action</a>
+      <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+    </p>-->
+  </div>
+</section>
