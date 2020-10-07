@@ -12,13 +12,18 @@ import { UploadFileService } from '../../services/upload_file/upload_file.servic
 export class UploadFileComponent {
   title = '';
 
+  constructor(private uploadFileService: UploadFileService) { };
+
   @HostListener("submit", ["$event"])
   uploadFile(event: any) {
     event.preventDefault();
     //event.stopPropagation();
 
-    console.log('Submitted');
+    this.uploadFileService.uploadFile().subscribe(response => {
+      console.log(response);
+    });
 
+    // console.log('Submitted');
     //return false;
   }
 }
