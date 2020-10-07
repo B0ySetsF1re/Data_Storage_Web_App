@@ -12,10 +12,11 @@ import { UploadFileService } from '../../services/upload_file/upload_file.servic
 export class UploadFileComponent {
   title = '';
 
-  @HostListener("click", ["$event"])
+  @HostListener("submit", ["$event"])
   uploadFile(event: any) {
-    //event.stopPropagation();
     event.preventDefault();
+    //event.stopPropagation();
+
     console.log('Submitted');
 
     //return false;
