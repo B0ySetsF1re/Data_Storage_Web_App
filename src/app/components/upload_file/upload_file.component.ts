@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Directive, HostListener } from '@angular/core';
 
 @Component({
   selector: 'upload-file',
@@ -8,4 +9,11 @@ import { Component } from '@angular/core';
 export class UploadFileComponent {
   title = '';
 
+  @HostListener("click", ["$event"])
+  uploadFile(event: any) {
+    event.stopPropagation();
+    console.log('Submitted');
+
+    return false;
+  }
 }

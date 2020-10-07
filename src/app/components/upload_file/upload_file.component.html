@@ -3,7 +3,7 @@
     <h4>Upload your file here</h4>
 
     <div class="row justify-content-center m-4">
-      <form method="POST" action="http://localhost:3000/api/data-storage/upload-file" enctype="multipart/form-data">
+      <form (submit)="uploadFile">
         <div class="form-group row">
 
           <div class="input-group mb-3 col">
