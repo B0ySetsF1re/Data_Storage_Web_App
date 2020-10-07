@@ -11,9 +11,10 @@ export class UploadFileComponent {
 
   @HostListener("click", ["$event"])
   uploadFile(event: any) {
-    event.stopPropagation();
+    //event.stopPropagation();
+    event.preventDefault();
     console.log('Submitted');
 
-    return false;
+    //return false;
   }
 }
