@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GetFilesMetadataService } from '../../services/get-files-metadata/get-files-metadata.service';
+import { fileMetaData } from './file-metadata';
 
 @Component({
   selector: 'app-files-metadata',
@@ -8,8 +9,21 @@ import { GetFilesMetadataService } from '../../services/get-files-metadata/get-f
   providers: [GetFilesMetadataService]
 })
 export class FilesMetadataComponent implements OnInit {
+  filesMetaData: fileMetaData[];
 
-  constructor() { }
+  constructor(private getFilesMetaDataService: GetFilesMetadataService) {
+    getFilesMetaDataService.getFilesMetaData()
+      .subscribe(
+        res => {
+          this.filesMetaData = res;
+          console.log(res);
+          console.log(this.filesMetaData);
+        },
+        err => {
+          console.log(err);
+        }
+      )
+  }
 
   ngOnInit(): void {
   }
