@@ -15,6 +15,7 @@ export class UploadFileComponent implements OnInit {
   title = '';
   uploadForm: FormGroup;
   uploadInProgress = false;
+  uploadFileSuccessMsg = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -41,6 +42,7 @@ export class UploadFileComponent implements OnInit {
   uploadFile(event: any) {
     event.preventDefault();
     this.uploadInProgress = true;
+    //(this.uploadFileSuccessMsg) ? this.uploadFileSuccessMsg = true : false;
 
     const formData = new FormData();
 
@@ -50,6 +52,7 @@ export class UploadFileComponent implements OnInit {
       .subscribe(
         res => {
           this.uploadInProgress = false;
+          this.uploadFileSuccessMsg = true;
           console.log(res);
         },
         err => {

@@ -2,11 +2,15 @@
   <div class="container">
     <h4>Upload your file here</h4>
 
-    <div class="row justify-content-center m-4">
+    <div class="m-4">
       <form (submit)="uploadFile">
-        <div class="form-group row">
+        <div class="form-group row justify-content-center">
 
-          <div class="input-group mb-3 col">
+          <div *ngIf="uploadFileSuccessMsg" class="alert alert-success col-sm-9" role="alert">
+            File has been uploaded successfully!
+          </div>
+
+          <div class="input-group mb-3 col-sm-9">
             <div *ngIf="uploadInProgress" class="spinner-border text-primary mr-4" role="status">
               <span class="sr-only">Loading...</span>
             </div>
