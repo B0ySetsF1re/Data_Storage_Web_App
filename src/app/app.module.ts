@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UploadFileComponent } from './components/upload_file/upload_file.component';
+import { UploadFileComponent } from './components/upload-file/upload-file.component';
 import { FilesMetadataComponent } from './components/files-metadata/files-metadata.component';
 
 @NgModule({

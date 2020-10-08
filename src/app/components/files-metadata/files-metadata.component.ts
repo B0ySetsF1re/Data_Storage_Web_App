@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GetFilesMetadataService } from '../../services/get_files_metadata/get-files-metadata.service';
+import { GetFilesMetadataService } from '../../services/get-files-metadata/get-files-metadata.service';
 
 @Component({
   selector: 'app-files-metadata',
