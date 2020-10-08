@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Directive, HostListener } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpRequest, HttpEvent } from '@angular/common/http';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { UploadFileService } from '../../services/upload_file/upload_file.service';
 
@@ -9,21 +11,45 @@ import { UploadFileService } from '../../services/upload_file/upload_file.servic
   styleUrls: ['./upload_file.component.css'],
   providers: [UploadFileService]
 })
-export class UploadFileComponent {
+export class UploadFileComponent implements OnInit {
   title = '';
+  baseUrl = 'http://localhost:3000/api/data-storage';
+  uploadForm: FormGroup;
 
-  constructor(private uploadFileService: UploadFileService) { };
+  constructor(
+    private httpClient: HttpClient,
+    private formBuilder: FormBuilder,
+    private uploadFileService: UploadFileService,
+  ) { };
+
+  ngOnInit() {
+    this.uploadForm = this.formBuilder.group({
+      upload: ['']
+    });
+  }
+
+  //@HostListener("", ["$event"])
+  onFileSelect(event: any) {
+    if(event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.uploadForm.get('upload').setValue(file);
+    }
+  }
+
+
 
   @HostListener("submit", ["$event"])
   uploadFile(event: any) {
     event.preventDefault();
+
+    const formData = new FormData();
+
+    formData.append('file', this.uploadForm.get('upload').value);
+    //console.log(formData);
+    this.httpClient.post<any>(`${this.baseUrl}/upload-file`, formData)
+      .subscribe(res => console.log(res), err => console.log(err));
     //event.stopPropagation();
-
-    this.uploadFileService.uploadFile().subscribe(response => {
-      console.log(response);
-    });
-
-    // console.log('Submitted');
+    //console.log('Submitted');
     //return false;
   }
 }
