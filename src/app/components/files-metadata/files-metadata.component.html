@@ -25,7 +25,7 @@
         <td>{{ fileMetaData.extension }}</td>
         <td>{{ fileMetaData.upload_date }}</td>
         <td>{{ fileMetaData.upload_time }}</td>
-        <td><button type="button" class="btn btn-outline-info">Download</button></td>
+        <td><a class="btn btn-outline-info" href="{{ downloadFileBaseUrl + fileMetaData.object_id }}">Download</a></td>
         <td><button type="button" class="btn btn-outline-danger">Delete</button></td>
         <td><input type="checkbox" class="form-check-lg ml-5 mr-3"></td>
       </tr>

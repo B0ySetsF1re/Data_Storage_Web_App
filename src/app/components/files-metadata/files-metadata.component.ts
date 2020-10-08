@@ -11,6 +11,7 @@ import { fileMetaData } from './file-metadata';
 })
 export class FilesMetadataComponent implements OnInit {
   filesMetaData: fileMetaData[];
+  downloadFileBaseUrl = 'http://localhost:3000/api/data-storage/download-file/';
 
   constructor(private getFilesMetaDataService: GetFilesMetadataService) {
       this.addFilesMetaData();
