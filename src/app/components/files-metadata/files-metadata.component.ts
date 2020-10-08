@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Directive, HostListener } from '@angular/core';
+
 import { GetFilesMetadataService } from '../../services/get-files-metadata/get-files-metadata.service';
 import { fileMetaData } from './file-metadata';
 
