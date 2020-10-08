@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Directive, HostListener } from '@angular/core';
+import { Directive, HostListener, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 // import { HttpClient, HttpHeaders, HttpRequest, HttpEvent } from '@angular/common/http';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
@@ -11,9 +11,10 @@ import { UploadFileService } from '../../services/upload_file/upload_file.servic
   styleUrls: ['./upload_file.component.css'],
   providers: [UploadFileService]
 })
-export class UploadFileComponent implements OnInit {
+export class UploadFileComponent implements OnInit, AfterViewInit {
   title = '';
   uploadForm: FormGroup;
+  uploadFileLabel = "Choose file...";
   uploadInProgress = false;
   uploadFileSuccessMsg = false;
 
@@ -26,6 +27,12 @@ export class UploadFileComponent implements OnInit {
     this.uploadForm = this.formBuilder.group({
       upload: ['']
     });
+  }
+
+  @ViewChild('fileUploadLabel') fileUploadLabel: ElementRef;
+
+  ngAfterViewInit(){
+    //console.log(this.fileUploadLabel);
   }
 
   //@HostListener("", ["$event"])
@@ -53,6 +60,8 @@ export class UploadFileComponent implements OnInit {
         res => {
           this.uploadInProgress = false;
           this.uploadFileSuccessMsg = true;
+          this.fileUploadLabel.nativeElement.innerHTML = 'Choose file...';
+          this.uploadForm.get('upload').setValue('');
           console.log(res);
         },
         err => {
