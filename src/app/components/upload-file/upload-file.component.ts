@@ -50,7 +50,10 @@ export class UploadFileComponent implements OnInit, AfterViewInit {
   uploadFile(event: any) {
     event.preventDefault();
     this.uploadInProgress = true;
-    (this.uploadFileSuccessMsg) ? this.uploadFileSuccessMsg = false : this.uploadFileSuccessMsg = true;
+    
+    if(this.uploadFileSuccessMsg == true) {
+      this.uploadFileSuccessMsg = false;
+    }
 
     const formData = new FormData();
 
