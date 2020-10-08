@@ -14,6 +14,7 @@ import { UploadFileService } from '../../services/upload_file/upload_file.servic
 export class UploadFileComponent implements OnInit, AfterViewInit {
   title = '';
   uploadForm: FormGroup;
+  msg = '';
   uploadFileLabel = "Choose file...";
   uploadInProgress = false;
   uploadFileSuccessMsg = false;
@@ -62,6 +63,7 @@ export class UploadFileComponent implements OnInit, AfterViewInit {
           this.uploadFileSuccessMsg = true;
           this.fileUploadLabel.nativeElement.innerHTML = 'Choose file...';
           this.uploadForm.get('upload').setValue('');
+          this.msg = res.Success;
           console.log(res);
         },
         err => {
