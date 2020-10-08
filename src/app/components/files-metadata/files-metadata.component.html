@@ -10,7 +10,8 @@
         <th scope="col">Extension</th>
         <th scope="col">Upload Date</th>
         <th scope="col">Upload Time</th>
-        <th scope="col">Delete</th>
+        <th scope="col"><button type="button" class="btn btn-secondary">Delete All</button></th>
+        <th scope="col"><button type="button" class="btn btn-secondary">Delete Multiple</button></th>
       </tr>
     </thead>
     <tbody>
@@ -24,6 +25,7 @@
         <td>{{ fileMetaData.upload_date }}</td>
         <td>{{ fileMetaData.upload_time }}</td>
         <td><button type="button" class="btn btn-outline-danger">Delete</button></td>
+        <td><input type="checkbox" class="form-check-lg ml-5 mr-3"></td>
       </tr>
     </tbody>
   </table>
