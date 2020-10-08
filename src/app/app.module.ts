@@ -6,11 +6,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UploadFileComponent } from './components/upload_file/upload_file.component';
+import { FilesMetadataComponent } from './files-metadata/files-metadata.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UploadFileComponent
+    UploadFileComponent,
+    FilesMetadataComponent
   ],
   imports: [
     BrowserModule,
