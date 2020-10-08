@@ -7,6 +7,9 @@
         <div class="form-group row">
 
           <div class="input-group mb-3 col">
+            <div *ngIf="uploadInProgress" class="spinner-border text-primary mr-4" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
             <div class="input-group-prepend">
               <span class="input-group-text">Upload</span>
             </div>

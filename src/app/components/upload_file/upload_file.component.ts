@@ -14,6 +14,7 @@ import { UploadFileService } from '../../services/upload_file/upload_file.servic
 export class UploadFileComponent implements OnInit {
   title = '';
   uploadForm: FormGroup;
+  uploadInProgress = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -39,6 +40,7 @@ export class UploadFileComponent implements OnInit {
   @HostListener("submit", ["$event"])
   uploadFile(event: any) {
     event.preventDefault();
+    this.uploadInProgress = true;
 
     const formData = new FormData();
 
@@ -47,6 +49,7 @@ export class UploadFileComponent implements OnInit {
     this.uploadFileService.uploadFile(formData)
       .subscribe(
         res => {
+          this.uploadInProgress = false;
           console.log(res);
         },
         err => {
