@@ -9,7 +9,7 @@ import bsCustomFileInput from 'bs-custom-file-input';
 export class AppComponent {
   title = '';
 
-  ngOnInit() {
+  ngOnInit(): void {
     bsCustomFileInput.init();
   }
 }

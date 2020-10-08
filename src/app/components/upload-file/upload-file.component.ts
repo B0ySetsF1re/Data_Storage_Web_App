@@ -24,7 +24,7 @@ export class UploadFileComponent implements OnInit, AfterViewInit {
     private uploadFileService: UploadFileService
   ) { };
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.uploadForm = this.formBuilder.group({
       upload: ['']
     });
