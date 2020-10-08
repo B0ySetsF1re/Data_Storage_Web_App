@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Directive, HostListener } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpRequest, HttpEvent } from '@angular/common/http';
+// import { HttpClient, HttpHeaders, HttpRequest, HttpEvent } from '@angular/common/http';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { UploadFileService } from '../../services/upload_file/upload_file.service';
@@ -13,13 +13,11 @@ import { UploadFileService } from '../../services/upload_file/upload_file.servic
 })
 export class UploadFileComponent implements OnInit {
   title = '';
-  baseUrl = 'http://localhost:3000/api/data-storage';
   uploadForm: FormGroup;
 
   constructor(
-    private httpClient: HttpClient,
     private formBuilder: FormBuilder,
-    private uploadFileService: UploadFileService,
+    private uploadFileService: UploadFileService
   ) { };
 
   ngOnInit() {
@@ -45,9 +43,17 @@ export class UploadFileComponent implements OnInit {
     const formData = new FormData();
 
     formData.append('file', this.uploadForm.get('upload').value);
-    //console.log(formData);
-    this.httpClient.post<any>(`${this.baseUrl}/upload-file`, formData)
-      .subscribe(res => console.log(res), err => console.log(err));
+
+    this.uploadFileService.uploadFile(formData)
+      .subscribe(
+        res => {
+          console.log(res);
+        },
+        err => {
+          console.log(err);
+        }
+      );
+
     //event.stopPropagation();
     //console.log('Submitted');
     //return false;
