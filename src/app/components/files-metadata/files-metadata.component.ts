@@ -12,7 +12,13 @@ export class FilesMetadataComponent implements OnInit {
   filesMetaData: fileMetaData[];
 
   constructor(private getFilesMetaDataService: GetFilesMetadataService) {
-    getFilesMetaDataService.getFilesMetaData()
+      this.addFilesMetaData();
+  }
+
+  ngOnInit(): void { }
+
+  addFilesMetaData() {
+    this.getFilesMetaDataService.getFilesMetaData()
       .subscribe(
         res => {
           this.filesMetaData = res;
@@ -22,10 +28,7 @@ export class FilesMetadataComponent implements OnInit {
         err => {
           console.log(err);
         }
-      )
-  }
-
-  ngOnInit(): void {
+      );
   }
 
 }
