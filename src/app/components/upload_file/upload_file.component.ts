@@ -42,7 +42,7 @@ export class UploadFileComponent implements OnInit {
   uploadFile(event: any) {
     event.preventDefault();
     this.uploadInProgress = true;
-    //(this.uploadFileSuccessMsg) ? this.uploadFileSuccessMsg = true : false;
+    (this.uploadFileSuccessMsg) ? this.uploadFileSuccessMsg = false : this.uploadFileSuccessMsg = true;
 
     const formData = new FormData();
 
