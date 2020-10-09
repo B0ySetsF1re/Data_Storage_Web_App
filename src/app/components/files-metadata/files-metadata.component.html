@@ -26,7 +26,7 @@
         <td>{{ fileMetaData.upload_date }}</td>
         <td>{{ fileMetaData.upload_time }}</td>
         <td><a class="btn btn-outline-info" href="{{ downloadFileBaseUrl + fileMetaData.object_id }}">Download</a></td>
-        <td><button type="submit" class="btn btn-outline-danger" name="delete" value="{{ fileMetaData.object_id }}">Delete</button></td>
+        <td><button type="button" (click)="deleteFile($event)" class="btn btn-outline-danger" id="{{ fileMetaData.object_id }}">Delete</button></td>
         <td><input type="checkbox" class="form-check-lg ml-5 mr-3"></td>
       </tr>
     </tbody>
