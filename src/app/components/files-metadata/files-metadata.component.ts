@@ -29,8 +29,8 @@ export class FilesMetadataComponent implements OnInit {
       .subscribe(
         res => {
           this.filesMetaData = res;
-          //console.log(res);
-          console.log(this.filesMetaData);
+          // console.log(res);
+          // console.log(this.filesMetaData);
         },
         err => {
           console.log(err);
