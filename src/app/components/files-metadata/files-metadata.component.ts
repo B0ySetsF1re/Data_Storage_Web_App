@@ -48,7 +48,7 @@ export class FilesMetadataComponent implements OnInit {
 
   deleteFile(event: any) {
     const target = event.target || event.srcElement || event.currentTarget;
-    const idAttr = target.attributes.id;
+    const idAttr = target.attributes.value;
     const value = idAttr.nodeValue;
 
     this.deleteFileService.deleteFile(value)
