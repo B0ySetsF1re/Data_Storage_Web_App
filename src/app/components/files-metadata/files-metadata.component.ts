@@ -27,11 +27,6 @@ export class FilesMetadataComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  onSubmit(filesMetaDataForm: NgForm) {
-
-    console.log(filesMetaDataForm);
-  }
-
   addFilesMetaData() {
     this.getFilesMetaDataService.getFilesMetaData()
       .subscribe(
@@ -89,5 +84,14 @@ export class FilesMetadataComponent implements OnInit {
     } else {
       console.log('Thre was an error...');
     }
+  }
+
+  getRenamedFileId(event: any) {
+    console.log(event);
+  }
+
+  renameFileOnSubmit(filesMetaDataForm: NgForm) {
+
+    console.log(filesMetaDataForm);
   }
 }
