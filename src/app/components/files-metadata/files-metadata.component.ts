@@ -3,23 +3,26 @@ import { FormBuilder, FormGroup, FormControl, NgForm } from '@angular/forms';
 
 import { GetFilesMetadataService } from '../../services/get-files-metadata/get-files-metadata.service';
 import { DeleteFileService } from '../../services/delete-file/delete-file.service';
+import { RenameFileService } from '../../services/rename-file/rename-file.service';
 import { FileMetaData } from './file-metadata';
 
 @Component({
   selector: 'app-files-metadata',
   templateUrl: './files-metadata.component.html',
   styleUrls: ['./files-metadata.component.css'],
-  providers: [GetFilesMetadataService]
+  providers: [GetFilesMetadataService, DeleteFileService, RenameFileService]
 })
 export class FilesMetadataComponent implements OnInit {
   filesMetaData: FileMetaData[];
-  //selectedCheckboxes = [];
-  private selectedCheckboxes: Array<any>;
+
   private downloadFileBaseUrl = 'http://localhost:3000/api/data-storage/download-file/';
+  private selectedCheckboxes: Array<any>;
+  private selectedFileIdToRename: string;
 
   constructor(
     private getFilesMetaDataService: GetFilesMetadataService,
     private deleteFileService: DeleteFileService,
+    private renameFileService: RenameFileService,
     private formBuilder: FormBuilder) {
       this.addFilesMetaData();
       this.selectedCheckboxes = new Array();
@@ -92,11 +95,16 @@ export class FilesMetadataComponent implements OnInit {
   }
 
   getRenamedFileId(event: any) {
-    console.log(event);
+    const target = event.target;
+    const idAttr = target.attributes.value;
+    const value = idAttr.nodeValue;
+
+    this.selectedFileIdToRename = value;
+    console.log(this.selectedFileIdToRename);
   }
 
-  renameFileOnSubmit(filesMetaDataForm: NgForm) {
+  renameFileOnSubmit(renameFileForm: NgForm) {
 
-    console.log(filesMetaDataForm);
+    console.log(renameFileForm.value);
   }
 }
