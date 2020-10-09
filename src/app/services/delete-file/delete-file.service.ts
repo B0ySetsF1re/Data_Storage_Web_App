@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { FileMetaData } from '../../components/files-metadata/file-metadata';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,5 +13,9 @@ export class DeleteFileService {
 
   deleteFile(id: any) {
     return this.httpClient.post<any>(`${this.baseUrl}${id}`, { });
+  }
+
+  deleteAll(filesMetaData: FileMetaData) {
+
   }
 }
