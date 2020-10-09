@@ -1,4 +1,4 @@
-export class fileMetaData {
+export class FileMetaData {
   object_id: string;
   file_name: string;
   disposition?: string;

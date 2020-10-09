@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, FormControl, NgForm } from '@angular/forms';
 
 import { GetFilesMetadataService } from '../../services/get-files-metadata/get-files-metadata.service';
 import { DeleteFileService } from '../../services/delete-file/delete-file.service';
-import { fileMetaData } from './file-metadata';
+import { FileMetaData } from './file-metadata';
 
 @Component({
   selector: 'app-files-metadata',
@@ -12,7 +12,7 @@ import { fileMetaData } from './file-metadata';
   providers: [GetFilesMetadataService]
 })
 export class FilesMetadataComponent implements OnInit {
-  filesMetaData: fileMetaData[];
+  filesMetaData: FileMetaData[];
   downloadFileBaseUrl = 'http://localhost:3000/api/data-storage/download-file/';
 
   constructor(
