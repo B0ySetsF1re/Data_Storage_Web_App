@@ -81,7 +81,8 @@ export class FilesMetadataComponent implements OnInit {
   }
 
   deleteMultiple(event: any) {
-
+    const res = this.deleteFileService.deleteMultiple(this.selectedCheckboxes);
+    location.reload();
   }
 
 }

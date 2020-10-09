@@ -18,7 +18,7 @@ export class DeleteFileService {
   deleteAll(filesMetaData: FileMetaData[]) {
 
     filesMetaData.forEach((fileMetaData) => {
-      this.httpClient.post<any>(`${this.baseUrl}${fileMetaData.object_id}`, {})
+      this.httpClient.post<any>(`${this.baseUrl}${fileMetaData.object_id}`, { })
         .subscribe(
           res => {
             /* *** */
@@ -30,5 +30,21 @@ export class DeleteFileService {
     });
 
     return { 'Success': 'Files have been deleted...' };
+  }
+
+  deleteMultiple(ids: Array<any>) {
+    ids.forEach((id) => {
+      this.httpClient.post<any>(`${this.baseUrl}${id}`, { } )
+        .subscribe(
+          res => {
+            /* *** */
+          },
+          err => {
+            return err;
+          }
+        )
+    });
+
+    return { 'Success': 'File(s) have been deleted...' };
   }
 }
