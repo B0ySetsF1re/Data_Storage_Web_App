@@ -68,7 +68,7 @@ export class FilesMetadataComponent implements OnInit {
     if(res.Success) {
       location.reload();
     } else {
-      console.log(res.Error);
+      console.log('Thre was an error...');
     }
   }
 
@@ -84,7 +84,10 @@ export class FilesMetadataComponent implements OnInit {
 
   deleteMultiple(event: any) {
     const res = this.deleteFileService.deleteMultiple(this.selectedCheckboxes);
-    location.reload();
+    if(res.Success) {
+      location.reload();
+    } else {
+      console.log('Thre was an error...');
+    }
   }
-
 }
