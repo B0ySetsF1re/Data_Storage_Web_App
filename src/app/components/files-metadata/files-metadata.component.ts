@@ -2,6 +2,7 @@ import { Component, OnInit, Directive, HostListener } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, NgForm } from '@angular/forms';
 
 import { GetFilesMetadataService } from '../../services/get-files-metadata/get-files-metadata.service';
+import { DeleteFileService } from '../../services/delete-file/delete-file.service';
 import { fileMetaData } from './file-metadata';
 
 @Component({
@@ -16,6 +17,7 @@ export class FilesMetadataComponent implements OnInit {
 
   constructor(
     private getFilesMetaDataService: GetFilesMetadataService,
+    private deleteFileService: DeleteFileService,
     private formBuilder: FormBuilder) {
       this.addFilesMetaData();
   }
@@ -37,11 +39,21 @@ export class FilesMetadataComponent implements OnInit {
   }
 
   deleteFile(event: any) {
-    var target = event.target || event.srcElement || event.currentTarget;
-    var idAttr = target.attributes.id;
-    var value = idAttr.nodeValue;
+    const target = event.target || event.srcElement || event.currentTarget;
+    const idAttr = target.attributes.id;
+    const value = idAttr.nodeValue;
 
-    console.log(value);
+    this.deleteFileService.deleteFile(value)
+      .subscribe(
+        res => {
+          console.log(res);
+        },
+        err => {
+          console.log(err);
+        }
+      )
+
+      location.reload();
 
   }
 

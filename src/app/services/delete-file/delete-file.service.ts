@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +10,6 @@ export class DeleteFileService {
   constructor(private httpClient: HttpClient) { }
 
   deleteFile(id: any) {
-    return this.httpClient.post<any>(`${this.baseUrl}/${id}`);
+    return this.httpClient.post<any>(`${this.baseUrl}${id}`, { });
   }
 }
