@@ -104,7 +104,15 @@ export class FilesMetadataComponent implements OnInit {
   }
 
   renameFileOnSubmit(renameFileForm: NgForm) {
-
-    console.log(renameFileForm.value);
+    this.renameFileService.renameFile(this.selectedFileIdToRename, renameFileForm.value)
+      .subscribe(
+        res => {
+          // console.log(res);
+          location.reload();
+        },
+        err => {
+          console.log(err);
+        }
+      );
   }
 }
