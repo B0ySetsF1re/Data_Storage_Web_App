@@ -42,7 +42,8 @@ export class FilesMetadataComponent implements OnInit {
   }
 
   deleteFile(event: any) {
-    const target = event.target || event.srcElement || event.currentTarget;
+    /*const target = event.target || event.srcElement || event.currentTarget;*/
+    const target = event.target;
     const idAttr = target.attributes.value;
     const value = idAttr.nodeValue;
 
@@ -68,11 +69,15 @@ export class FilesMetadataComponent implements OnInit {
   }
 
   collectSelectedFilesToDelete(event: any) {
-    if(event.target.checked) {
-      this.selectedCheckboxes.push(event.target.attributes.value.nodeValue);
+    const target = event.target;
+    const idAttr = target.attributes.value;
+    const value = idAttr.nodeValue;
+
+    if(target.checked) {
+      this.selectedCheckboxes.push(value);
       console.log(this.selectedCheckboxes);
     } else if(!event.target.checked) {
-      this.selectedCheckboxes.splice(event.target.attributes.value.nodeValue, 1);
+      this.selectedCheckboxes.splice(value, 1);
       console.log(this.selectedCheckboxes);
     }
   }
