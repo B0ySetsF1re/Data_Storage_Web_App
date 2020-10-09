@@ -7,12 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
 import { FilesMetadataComponent } from './components/files-metadata/files-metadata.component';
+import { FilesStatsComponent } from './components/files-stats/files-stats.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UploadFileComponent,
-    FilesMetadataComponent
+    FilesMetadataComponent,
+    FilesStatsComponent
   ],
   imports: [
     BrowserModule,
