@@ -3,7 +3,16 @@ ul.nav.nav-pills li.nav-item a.nav-link.active {
   background-color: #343a40;
 }
 
+ul.nav.nav-pills li.nav-item a.nav-link.active:hover {
+  color: #fff;
+  background-color: #525c66;
+}
+
 
 ul.nav.nav-pills li.nav-item a.nav-link {
   color: #343a40;
+}
+
+ul.nav.nav-pills li.nav-item a.nav-link:hover {
+  color: #525c66;
 }
