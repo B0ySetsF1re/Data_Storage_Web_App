@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { map, filter, catchError, mergeMap } from 'rxjs/operators';
 
 import { FilesStatsService } from '../../services/files-stats/files-stats.service';
 
@@ -9,6 +10,8 @@ import { FilesStatsService } from '../../services/files-stats/files-stats.servic
   providers: [FilesStatsService]
 })
 export class FilesStatsComponent implements OnInit {
+  filesStatsContent: Object;
+  totalContentSize: string;
 
   constructor(private filesStatsService: FilesStatsService) {
     this.getFilesStats();
@@ -20,7 +23,12 @@ export class FilesStatsComponent implements OnInit {
     this.filesStatsService.getFilesStats()
       .subscribe(
         res => {
-          console.log(res);
+          let objSrc = res;
+
+          this.totalContentSize = objSrc.total_content_size;
+          delete objSrc.total_content_size;
+
+          this.filesStatsContent = new Object(objSrc);
         },
         err => {
           console.log(err);
