@@ -7,8 +7,7 @@ import { HttpClient } from '@angular/common/http'; // HttpHeaders, HttpRequest, 
 export class UploadFileService {
   private baseUrl = 'http://localhost:3000/api/data-storage';
 
-  constructor(
-    private httpClient: HttpClient) { };
+  constructor(private httpClient: HttpClient) { };
 
   uploadFile(formData: FormData) { // : Observable<HttpEvent<any>>
     return this.httpClient.post<any>(`${this.baseUrl}/upload-file`, formData);
