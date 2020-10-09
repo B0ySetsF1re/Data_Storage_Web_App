@@ -44,13 +44,11 @@ export class UploadFileComponent implements OnInit, AfterViewInit {
     }
   }
 
-
-
   @HostListener("submit", ["$event"])
   uploadFile(event: any) {
     event.preventDefault();
     this.uploadInProgress = true;
-    
+
     if(this.uploadFileSuccessMsg == true) {
       this.uploadFileSuccessMsg = false;
     }
