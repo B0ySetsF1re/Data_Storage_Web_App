@@ -57,4 +57,9 @@ export class FilesMetadataComponent implements OnInit {
 
   }
 
+  deleteAll(event: any) {
+    console.log(this.deleteFileService.deleteAll(this.filesMetaData));
+    location.reload();
+  }
+
 }
