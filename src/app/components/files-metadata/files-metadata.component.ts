@@ -13,16 +13,24 @@ import { FileMetaData } from './file-metadata';
 })
 export class FilesMetadataComponent implements OnInit {
   filesMetaData: FileMetaData[];
-  downloadFileBaseUrl = 'http://localhost:3000/api/data-storage/download-file/';
+  //selectedCheckboxes = [];
+  private selectedCheckboxes: Array<any>;
+  private downloadFileBaseUrl = 'http://localhost:3000/api/data-storage/download-file/';
 
   constructor(
     private getFilesMetaDataService: GetFilesMetadataService,
     private deleteFileService: DeleteFileService,
     private formBuilder: FormBuilder) {
       this.addFilesMetaData();
+      this.selectedCheckboxes = new Array();
   }
 
   ngOnInit(): void { }
+
+  onSubmit(filesMetaDataForm: NgForm) {
+
+    console.log(filesMetaDataForm);
+  }
 
   addFilesMetaData() {
     this.getFilesMetaDataService.getFilesMetaData()
@@ -60,6 +68,20 @@ export class FilesMetadataComponent implements OnInit {
   deleteAll(event: any) {
     console.log(this.deleteFileService.deleteAll(this.filesMetaData));
     location.reload();
+  }
+
+  collectSelectedFilesToDelete(event: any) {
+    if(event.target.checked) {
+      this.selectedCheckboxes.push(event.target.attributes.value.nodeValue);
+      console.log(this.selectedCheckboxes);
+    } else if(!event.target.checked) {
+      this.selectedCheckboxes.splice(event.target.attributes.value.nodeValue, 1);
+      console.log(this.selectedCheckboxes);
+    }
+  }
+
+  deleteMultiple(event: any) {
+
   }
 
 }

@@ -12,7 +12,7 @@
         <th scope="col">Upload Time</th>
         <th scope="col">Download files</th>
         <th scope="col"><button type="button" (click)="deleteAll($event)" class="btn btn-secondary">Delete All</button></th>
-        <th scope="col"><button type="submit" class="btn btn-secondary">Delete Multiple</button></th>
+        <th scope="col"><button type="button" (click)="deleteMultiple($event)" class="btn btn-secondary">Delete Multiple</button></th>
       </tr>
     </thead>
     <tbody>
@@ -27,7 +27,7 @@
         <td>{{ fileMetaData.upload_time }}</td>
         <td><a class="btn btn-outline-info" href="{{ downloadFileBaseUrl + fileMetaData.object_id }}">Download</a></td>
         <td><button type="button" (click)="deleteFile($event)" class="btn btn-outline-danger" id="{{ fileMetaData.object_id }}">Delete</button></td>
-        <td><input type="checkbox" class="form-check-lg ml-5 mr-3"></td>
+        <td><input type="checkbox" (click)="collectSelectedFilesToDelete($event)" class="form-check-lg ml-5 mr-3" name="{{ fileMetaData.object_id }}" value="{{ fileMetaData.object_id }}" ngModel ></td>
       </tr>
     </tbody>
   </table>
