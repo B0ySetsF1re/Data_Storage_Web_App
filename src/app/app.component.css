@@ -1,18 +1,45 @@
 ul.nav.nav-pills li.nav-item a.nav-link.active {
   color: #fff;
   background-color: #343a40;
+  transition: color .15s ease-in-out,
+    background-color .15s ease-in-out,
+    border-color .15s ease-in-out,
+    box-shadow .15s ease-in-out;
+  transition-property: color, background-color, border-color, box-shadow;
+  transition-duration: 0.15s, 0.15s, 0.15s, 0.15s;
+  transition-timing-function: ease-in-out, ease-in-out, ease-in-out, ease-in-out;
+  transition-delay: 0s, 0s, 0s, 0s;
 }
 
 ul.nav.nav-pills li.nav-item a.nav-link.active:hover {
   color: #fff;
   background-color: #525c66;
+  transition: color .15s ease-in-out,
+    background-color .15s ease-in-out,
+    border-color .15s ease-in-out,
+    box-shadow .15s ease-in-out;
+  transition-property: color, background-color, border-color, box-shadow;
+  transition-duration: 0.15s, 0.15s, 0.15s, 0.15s;
+  transition-timing-function: ease-in-out, ease-in-out, ease-in-out, ease-in-out;
+  transition-delay: 0s, 0s, 0s, 0s;
+
 }
 
 
 ul.nav.nav-pills li.nav-item a.nav-link {
   color: #343a40;
+  transition: color .15s ease-in-out;
+  transition-property: color;
+  transition-duration: 0.15s;
+  transition-timing-function: ease-in-out;
+  transition-delay: 0s;
 }
 
 ul.nav.nav-pills li.nav-item a.nav-link:hover {
   color: #525c66;
+  transition: color .15s ease-in-out;
+  transition-property: color;
+  transition-duration: 0.15s;
+  transition-timing-function: ease-in-out;
+  transition-delay: 0s;
 }
