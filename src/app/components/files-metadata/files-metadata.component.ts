@@ -1,6 +1,7 @@
 import { Component, OnInit, Directive, HostListener } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, NgForm } from '@angular/forms';
 
+import { UploadFileService } from '../../services/upload-file/upload-file.service';
 import { GetFilesMetadataService } from '../../services/get-files-metadata/get-files-metadata.service';
 import { DeleteFileService } from '../../services/delete-file/delete-file.service';
 import { RenameFileService } from '../../services/rename-file/rename-file.service';
@@ -10,7 +11,7 @@ import { FileMetaData } from './file-metadata';
   selector: 'app-files-metadata',
   templateUrl: './files-metadata.component.html',
   styleUrls: ['./files-metadata.component.css'],
-  providers: [GetFilesMetadataService, DeleteFileService, RenameFileService]
+  providers: [UploadFileService, GetFilesMetadataService, DeleteFileService, RenameFileService]
 })
 export class FilesMetadataComponent implements OnInit {
   filesMetaData: FileMetaData[];
@@ -20,6 +21,7 @@ export class FilesMetadataComponent implements OnInit {
   private selectedFileIdToRename: string;
 
   constructor(
+    private uploadFileService: UploadFileService,
     private getFilesMetaDataService: GetFilesMetadataService,
     private deleteFileService: DeleteFileService,
     private renameFileService: RenameFileService,
