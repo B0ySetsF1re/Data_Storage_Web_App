@@ -63,12 +63,15 @@ export class FilesMetadataComponent implements OnInit {
   }
 
   deleteAll(event: any) {
-    const res = this.deleteFileService.deleteAll(this.filesMetaData);
-    if(res.Success) {
-      location.reload();
-    } else {
-      console.log('Thre was an error...');
-    }
+    this.deleteFileService.deleteAll()
+      .subscribe(
+        res => {
+          location.reload();
+        },
+        err => {
+          console.log(err);
+        }
+      )
   }
 
   collectSelectedFilesToDelete(event: any) {

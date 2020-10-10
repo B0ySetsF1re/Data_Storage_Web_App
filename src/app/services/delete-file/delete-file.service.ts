@@ -7,34 +7,23 @@ import { FileMetaData } from '../../components/files-metadata/file-metadata';
   providedIn: 'root'
 })
 export class DeleteFileService {
-  private baseUrl = 'http://localhost:3000/api/data-storage/delete-uploaded-file/';
+  private baseUrl = 'http://localhost:3000/api/data-storage/';
+  private deleteFileUrl = 'delete-uploaded-file/';
+  private deleteAllFilesUrl = 'delete-all-uploaded-files';
 
   constructor(private httpClient: HttpClient) { }
 
   deleteFile(id: any) {
-    return this.httpClient.post<any>(`${this.baseUrl}${id}`, { });
+    return this.httpClient.post<any>(`${this.baseUrl}${this.deleteFileUrl}${id}`, { });
   }
 
-  deleteAll(filesMetaData: FileMetaData[]) {
-
-    filesMetaData.forEach((fileMetaData) => {
-      this.httpClient.post<any>(`${this.baseUrl}${fileMetaData.object_id}`, { })
-        .subscribe(
-          res => {
-            /* *** */
-          },
-          err => {
-            return err;
-          }
-        )
-    });
-
-    return { 'Success': 'Files have been deleted...' };
+  deleteAll() {
+    return this.httpClient.post<any>(`${this.baseUrl}${this.deleteAllFilesUrl}`, { });
   }
 
   deleteMultiple(ids: Array<any>) {
     ids.forEach((id) => {
-      this.httpClient.post<any>(`${this.baseUrl}${id}`, { } )
+      this.httpClient.post<any>(`${this.baseUrl}${this.deleteFileUrl}${id}`, { } )
         .subscribe(
           res => {
             /* *** */
