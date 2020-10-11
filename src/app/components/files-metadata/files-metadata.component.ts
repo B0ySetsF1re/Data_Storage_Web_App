@@ -84,10 +84,8 @@ export class FilesMetadataComponent implements OnInit {
 
     if(target.checked) {
       this.selectedCheckboxes.push(value);
-      console.log(this.selectedCheckboxes);
     } else if(!event.target.checked) {
       this.selectedCheckboxes.splice(value, 1);
-      console.log(this.selectedCheckboxes);
     }
   }
 
