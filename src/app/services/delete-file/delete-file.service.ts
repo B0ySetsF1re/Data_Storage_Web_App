@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { tap } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+
 import { FileMetaData } from '../../components/files-metadata/file-metadata';
 
 @Injectable({
@@ -11,14 +14,32 @@ export class DeleteFileService {
   private deleteFileUrl = 'delete-uploaded-file/';
   private deleteAllFilesUrl = 'delete-all-uploaded-files';
 
+  private fileDeletedSource = new Subject<any>();
+  private allFilesDeletedSource = new Subject<any>();
+  //private multipleFilesDeletedSource = new Subject<any>();
+
+  fileDeleted$ = this.fileDeletedSource.asObservable();
+  allFilesDeleted$ = this.allFilesDeletedSource.asObservable();
+  //multipleFilesDeleted$ = this.multipleFilesDeletedSource.asObservable();
+
   constructor(private httpClient: HttpClient) { }
 
   deleteFile(id: any) {
-    return this.httpClient.post<any>(`${ this.baseUrl + this.deleteFileUrl + id }`, { });
+    return this.httpClient.post<any>(`${ this.baseUrl + this.deleteFileUrl + id }`, { })
+      .pipe(
+        tap(() => {
+          this.fileDeletedSource.next();
+        })
+      );
   }
 
   deleteAll() {
-    return this.httpClient.post<any>(`${ this.baseUrl + this.deleteAllFilesUrl }`, { });
+    return this.httpClient.post<any>(`${ this.baseUrl + this.deleteAllFilesUrl }`, { })
+      .pipe(
+        tap(() => {
+          this.allFilesDeletedSource.next();
+        })
+      );
   }
 
   deleteMultiple(ids: Array<any>) {
