@@ -11,7 +11,7 @@ import { FileMetaData } from './file-metadata';
   selector: 'app-files-metadata',
   templateUrl: './files-metadata.component.html',
   styleUrls: ['./files-metadata.component.css'],
-  providers: [UploadFileService, GetFilesMetadataService, DeleteFileService, RenameFileService]
+  providers: [GetFilesMetadataService, DeleteFileService, RenameFileService]
 })
 export class FilesMetadataComponent implements OnInit {
   filesMetaData: FileMetaData[];
@@ -28,6 +28,10 @@ export class FilesMetadataComponent implements OnInit {
     private formBuilder: FormBuilder) {
       this.addFilesMetaData();
       this.selectedCheckboxes = new Array();
+      this.uploadFileService.fileUploaded$
+        .subscribe(() => {
+          this.addFilesMetaData();
+        });
   }
 
   ngOnInit(): void { }
