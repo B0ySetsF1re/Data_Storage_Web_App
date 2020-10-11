@@ -29,7 +29,8 @@ export class UploadFileComponent implements OnInit, AfterViewInit {
   ) {
     this.subscribeToDeleteFileObs();
     this.subscribeToDeleteAllFilesObs();
-    this.subscribeToRenameFileObs();
+    this.subscribeToSelectedDeletedFilesObs();
+    this.subscribeToRenamedFileObs();
   };
 
   ngOnInit(): void {
@@ -117,8 +118,23 @@ export class UploadFileComponent implements OnInit, AfterViewInit {
         });
   }
 
-  subscribeToRenameFileObs() {
+  subscribeToRenamedFileObs() {
     this.renameFileService.fileRenamed$
+      .subscribe(
+        res => {
+          this.successMsg = true;
+          this.msg = res.Success;
+        },
+        err => {
+          let errMsg = err.error;
+
+          this.errorMsg = true;
+          this.msg = errMsg.Error;
+        });
+  }
+
+  subscribeToSelectedDeletedFilesObs() {
+    this.deleteFileService.selectedFilesDeleted$
       .subscribe(
         res => {
           this.successMsg = true;
