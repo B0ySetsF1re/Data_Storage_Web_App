@@ -27,19 +27,25 @@ export class DeleteFileService {
   deleteFile(id: any) {
     return this.httpClient.post<any>(`${ this.baseUrl + this.deleteFileUrl + id }`, { })
       .pipe(
-        tap(() => {
-          this.fileDeletedSource.next();
-        })
-      );
+        tap(
+          res => {
+          this.fileDeletedSource.next(res);
+        },
+          err => {
+            this.fileDeletedSource.next(err);
+          }));
   }
 
   deleteAll() {
     return this.httpClient.post<any>(`${ this.baseUrl + this.deleteAllFilesUrl }`, { })
       .pipe(
-        tap(() => {
-          this.allFilesDeletedSource.next();
-        })
-      );
+        tap(res => {
+          this.allFilesDeletedSource.next(res);
+        },
+        err => {
+          this.allFilesDeletedSource.next(err);
+        }
+      ));
   }
 
   deleteMultiple(ids: Array<any>) {
