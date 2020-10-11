@@ -1,6 +1,6 @@
 # Node modules
 node_modules
 
-# Environment variables (make sure to uncomment env vars on prod)
-# src/app/environments/*
-# *.env
+# Environment variables
+src/app/environments/*
+*.env
