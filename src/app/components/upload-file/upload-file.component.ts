@@ -4,6 +4,7 @@ import { Directive, HostListener, ElementRef, ViewChild, AfterViewInit } from '@
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { UploadFileService } from '../../services/upload-file/upload-file.service';
+import { RenameFileService } from '../../services/rename-file/rename-file.service';
 import { DeleteFileService } from '../../services/delete-file/delete-file.service';
 
 @Component({
@@ -23,10 +24,12 @@ export class UploadFileComponent implements OnInit, AfterViewInit {
   constructor(
     private formBuilder: FormBuilder,
     private uploadFileService: UploadFileService,
+    private renameFileService: RenameFileService,
     private deleteFileService: DeleteFileService
   ) {
     this.subscribeToDeleteFileObs();
     this.subscribeToDeleteAllFilesObs();
+    this.subscribeToRenameFileObs();
   };
 
   ngOnInit(): void {
@@ -108,6 +111,21 @@ export class UploadFileComponent implements OnInit, AfterViewInit {
 
   subscribeToDeleteAllFilesObs() {
     this.deleteFileService.allFilesDeleted$
+      .subscribe(
+        res => {
+          this.successMsg = true;
+          this.msg = res.Success;
+        },
+        err => {
+          let errMsg = err.error;
+
+          this.errorMsg = true;
+          this.msg = errMsg.Error;
+        });
+  }
+
+  subscribeToRenameFileObs() {
+    this.renameFileService.fileRenamed$
       .subscribe(
         res => {
           this.successMsg = true;
