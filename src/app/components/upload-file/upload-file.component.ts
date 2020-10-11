@@ -4,6 +4,7 @@ import { Directive, HostListener, ElementRef, ViewChild, AfterViewInit } from '@
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { UploadFileService } from '../../services/upload-file/upload-file.service';
+import { DeleteFileService } from '../../services/delete-file/delete-file.service';
 
 @Component({
   selector: 'upload-file',
@@ -20,8 +21,15 @@ export class UploadFileComponent implements OnInit, AfterViewInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private uploadFileService: UploadFileService
-  ) { };
+    private uploadFileService: UploadFileService,
+    private deleteFileService: DeleteFileService
+  ) {
+    this.deleteFileService.fileDeleted$
+      .subscribe(() => {
+        this.uploadFileSuccessMsg = true;
+        this.msg = 'File has been deleted sucessfully...'
+      });
+  };
 
   ngOnInit(): void {
     this.uploadForm = this.formBuilder.group({
