@@ -40,11 +40,8 @@ export class UploadFileComponent implements OnInit, AfterViewInit {
 
   @ViewChild('fileUploadLabel') fileUploadLabel: ElementRef;
 
-  ngAfterViewInit(){
-    //console.log(this.fileUploadLabel);
-  }
+  ngAfterViewInit(){ }
 
-  //@HostListener("", ["$event"])
   onFileSelect(event: any) {
     if(event.target.files.length > 0) {
       const file = event.target.files[0];
@@ -88,10 +85,6 @@ export class UploadFileComponent implements OnInit, AfterViewInit {
           this.msg = errMsg.Error;
         }
       );
-
-    //event.stopPropagation();
-    //console.log('Submitted');
-    //return false;
   }
 
   subscribeToDeleteFileObs() {

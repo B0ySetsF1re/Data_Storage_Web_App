@@ -18,11 +18,9 @@ export class DeleteFileService {
 
   private fileDeletedSource = new Subject<any>();
   private allFilesDeletedSource = new Subject<any>();
-  //private multipleFilesDeletedSource = new Subject<any>();
 
   fileDeleted$ = this.fileDeletedSource.asObservable();
   allFilesDeleted$ = this.allFilesDeletedSource.asObservable();
-  //multipleFilesDeleted$ = this.multipleFilesDeletedSource.asObservable();
 
   constructor(private httpClient: HttpClient) { }
 
