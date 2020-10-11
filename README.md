@@ -47,7 +47,7 @@ You can also use **[nodemon](https://www.npmjs.com/package/nodemon)** package, s
   ```
 Read more about ng command here: **[CLI Overview and Command Reference](https://angular.io/cli#cli-overview-and-command-reference)**
 
-## Setting up host and keyspace name environment variables
+## Setting up environment variables
 After cloning the repository, **you need to configure the environment variables for API configuration. Otherwise the app won't even run**. Locate **_src_** folder in the project's root and create two files: **_environment.ts_** and **_environment.prod.ts_**. You can take basic configurations below:
 
 ```typescript
