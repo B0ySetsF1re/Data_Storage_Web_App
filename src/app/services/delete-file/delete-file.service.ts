@@ -18,22 +18,24 @@ export class DeleteFileService {
 
   private fileDeletedSource = new Subject<any>();
   private allFilesDeletedSource = new Subject<any>();
+  private selectedFilesDeletedSource = new Subject<any>();
 
   fileDeleted$ = this.fileDeletedSource.asObservable();
   allFilesDeleted$ = this.allFilesDeletedSource.asObservable();
+  selectedFilesDeleted$ = this.selectedFilesDeletedSource.asObservable();
 
   constructor(private httpClient: HttpClient) { }
 
   deleteFile(id: any) {
     return this.httpClient.post<any>(`${ this.baseUrl + this.deleteFileUrl + id }`, { })
       .pipe(
-        tap(
-          res => {
+        tap(res => {
           this.fileDeletedSource.next(res);
         },
-          err => {
-            this.fileDeletedSource.next(err);
-          }));
+        err => {
+          this.fileDeletedSource.next(err);
+        }
+      ));
   }
 
   deleteAll() {
@@ -48,19 +50,15 @@ export class DeleteFileService {
       ));
   }
 
-  deleteMultiple(ids: Array<any>) {
-    ids.forEach((id) => {
-      this.httpClient.post<any>(`${ this.baseUrl + this.deleteFileUrl + id }`, { } )
-        .subscribe(
-          res => {
-            /* *** */
-          },
-          err => {
-            return err;
-          }
-        )
-    });
-
-    return { 'Success': 'File(s) have been deleted...' };
+  deleteSelected(ids: Array<any>) {
+    return this.httpClient.post<any>(`${ this.baseUrl + '/delete-selected-uploaded-files' }`, { ids } )
+      .pipe(
+        tap(res => {
+          this.selectedFilesDeletedSource.next(res);
+        },
+        err => {
+          this.selectedFilesDeletedSource.next(err);
+        }
+      ));
   }
 }
