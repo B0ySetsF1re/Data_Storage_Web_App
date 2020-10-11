@@ -9,6 +9,9 @@
           <div *ngIf="successMsg" class="alert alert-success col-sm-9" role="alert">
             {{ msg }}
           </div>
+          <div *ngIf="errorMsg" class="alert alert-danger col-sm-9" role="alert">
+            {{ msg }}
+          </div>
 
           <div class="input-group mb-3 col-sm-9">
             <div *ngIf="uploadInProgress" class="spinner-border text-primary mr-4" role="status">

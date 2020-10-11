@@ -18,6 +18,7 @@ export class UploadFileComponent implements OnInit, AfterViewInit {
   uploadFileLabel = "Choose file...";
   uploadInProgress = false;
   successMsg = false;
+  errorMsg = false;
 
   constructor(
     private formBuilder: FormBuilder,
