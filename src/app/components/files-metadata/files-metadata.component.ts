@@ -40,6 +40,10 @@ export class FilesMetadataComponent implements OnInit {
         .subscribe(() => {
           this.addFilesMetaData();
         });
+      this.renameFileService.fileRenamed$
+        .subscribe(() => {
+          this.addFilesMetaData();
+        });
   }
 
   ngOnInit(): void { }
@@ -104,15 +108,6 @@ export class FilesMetadataComponent implements OnInit {
   }
 
   renameFileOnSubmit(renameFileForm: NgForm) {
-    this.renameFileService.renameFile(this.selectedFileIdToRename, renameFileForm.value)
-      .subscribe(
-        res => {
-          // console.log(res);
-          location.reload();
-        },
-        err => {
-          console.log(err);
-        }
-      );
+    this.renameFileService.renameFile(this.selectedFileIdToRename, renameFileForm.value).subscribe();
   }
 }
