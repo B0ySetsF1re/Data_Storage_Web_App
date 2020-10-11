@@ -29,6 +29,11 @@ export class UploadFileComponent implements OnInit, AfterViewInit {
         this.uploadFileSuccessMsg = true;
         this.msg = 'File has been deleted sucessfully...'
       });
+    this.deleteFileService.allFilesDeleted$
+      .subscribe(() => {
+        this.uploadFileSuccessMsg = true;
+        this.msg = 'All files have been deleted successfully...';
+      });
   };
 
   ngOnInit(): void {
