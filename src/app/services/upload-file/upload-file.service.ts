@@ -2,6 +2,7 @@ import { Injectable, Output, EventEmitter } from '@angular/core'
 import { HttpClient } from '@angular/common/http'; // HttpHeaders, HttpRequest, HttpEvent
 // import { Observable } from 'rxjs';
 // import { map } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
 @Injectable()
@@ -14,7 +15,12 @@ export class UploadFileService {
   constructor(private httpClient: HttpClient) { };
 
   uploadFile(formData: FormData) { // : Observable<HttpEvent<any>>
-    this.fileUploadedSource.next();
-    return this.httpClient.post<any>(`${this.baseUrl}/upload-file`, formData);
+    // this.fileUploadedSource.next();
+    return this.httpClient.post<any>(`${this.baseUrl}/upload-file`, formData)
+      .pipe(
+        tap(() => {
+          this.fileUploadedSource.next();
+        })
+      );
   }
 }
