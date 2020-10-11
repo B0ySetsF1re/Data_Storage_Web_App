@@ -40,6 +40,10 @@ export class FilesMetadataComponent implements OnInit {
         .subscribe(() => {
           this.addFilesMetaData();
         });
+      this.deleteFileService.selectedFilesDeleted$
+        .subscribe(() => {
+          this.addFilesMetaData();
+        });
       this.renameFileService.fileRenamed$
         .subscribe(() => {
           this.addFilesMetaData();
@@ -53,8 +57,6 @@ export class FilesMetadataComponent implements OnInit {
       .subscribe(
         res => {
           this.filesMetaData = res;
-          // console.log(res);
-          // console.log(this.filesMetaData);
         },
         err => {
           console.log(err);
@@ -89,13 +91,8 @@ export class FilesMetadataComponent implements OnInit {
     }
   }
 
-  deleteMultiple(event: any) {
-    const res = this.deleteFileService.deleteMultiple(this.selectedCheckboxes);
-    if(res.Success) {
-      location.reload();
-    } else {
-      console.log('Thre was an error...');
-    }
+  deleteSelected(event: any) {
+    this.deleteFileService.deleteSelected(this.selectedCheckboxes).subscribe();
   }
 
   getRenamedFileId(event: any) {
