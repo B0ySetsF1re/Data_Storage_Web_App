@@ -64,27 +64,11 @@ export class FilesMetadataComponent implements OnInit {
     const idAttr = target.attributes.value;
     const value = idAttr.nodeValue;
 
-    this.deleteFileService.deleteFile(value)
-      .subscribe(
-        res => {
-          console.log(res);
-        },
-        err => {
-          console.log(err);
-        }
-      )
+    this.deleteFileService.deleteFile(value).subscribe();
   }
 
   deleteAll(event: any) {
-    this.deleteFileService.deleteAll()
-      .subscribe(
-        res => {
-          console.log(res);
-        },
-        err => {
-          console.log(err);
-        }
-      )
+    this.deleteFileService.deleteAll().subscribe();
   }
 
   collectSelectedFilesToDelete(event: any) {
