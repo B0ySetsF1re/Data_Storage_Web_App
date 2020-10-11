@@ -24,7 +24,6 @@ export class UploadFileService {
         },
           err => {
             this.fileUploadedSource.next(err);
-          })
-      );
+          }));
   }
 }
