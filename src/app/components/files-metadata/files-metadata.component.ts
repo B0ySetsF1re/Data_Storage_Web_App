@@ -36,6 +36,10 @@ export class FilesMetadataComponent implements OnInit {
         .subscribe(() => {
           this.addFilesMetaData();
         });
+      this.deleteFileService.allFilesDeleted$
+        .subscribe(() => {
+          this.addFilesMetaData();
+        });
   }
 
   ngOnInit(): void { }
@@ -75,7 +79,7 @@ export class FilesMetadataComponent implements OnInit {
     this.deleteFileService.deleteAll()
       .subscribe(
         res => {
-          location.reload();
+          console.log(res);
         },
         err => {
           console.log(err);
