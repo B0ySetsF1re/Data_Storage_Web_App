@@ -15,6 +15,7 @@ export class DeleteFileService {
   private baseUrl = environment.API_URL;
   private deleteFileUrl = environment.API_POST.delete_uploaded_file;
   private deleteAllFilesUrl = environment.API_POST.delete_all_uploaded_files;
+  private deleteSelectedFilesUrl = environment.API_POST.delete_selected_uploaded_files;
 
   private fileDeletedSource = new Subject<any>();
   private allFilesDeletedSource = new Subject<any>();
@@ -51,7 +52,7 @@ export class DeleteFileService {
   }
 
   deleteSelected(ids: Array<any>) {
-    return this.httpClient.post<any>(`${ this.baseUrl + '/delete-selected-uploaded-files' }`, { ids } )
+    return this.httpClient.post<any>(`${ this.baseUrl + this.deleteSelectedFilesUrl }`, { ids } )
       .pipe(
         tap(res => {
           this.selectedFilesDeletedSource.next(res);
