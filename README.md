@@ -64,7 +64,8 @@ export const environment = {
     upload_file: "/upload-file",
     rename_uploaded_file: "/rename-uploaded-file/",
     delete_uploaded_file: "/delete-uploaded-file/",
-    delete_all_uploaded_files: "/delete-all-uploaded-files/"
+    delete_all_uploaded_files: "/delete-all-uploaded-files/",
+    delete_selected_uploaded_files: "/delete-selected-uploaded-files/"
   }
 };
 ```
