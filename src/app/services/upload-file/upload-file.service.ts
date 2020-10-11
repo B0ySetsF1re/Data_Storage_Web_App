@@ -18,9 +18,13 @@ export class UploadFileService {
     // this.fileUploadedSource.next();
     return this.httpClient.post<any>(`${ this.baseUrl }/upload-file`, formData)
       .pipe(
-        tap(() => {
-          this.fileUploadedSource.next();
-        })
+        tap(
+          res => {
+          this.fileUploadedSource.next(res);
+        },
+          err => {
+            this.fileUploadedSource.next(err);
+          })
       );
   }
 }
