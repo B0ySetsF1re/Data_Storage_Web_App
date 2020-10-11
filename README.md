@@ -98,8 +98,7 @@ To change port or host, take a look at **_angular.json_** file and check the fol
     }
 }
 ```
-
-
+**You don't need to change here anything, the client will be running locally by default.**
 
 For **_prod_** deployment check out the Angular's official docs: **[Configuring application environments](https://angular.io/guide/build#configuring-application-environments)**
 
