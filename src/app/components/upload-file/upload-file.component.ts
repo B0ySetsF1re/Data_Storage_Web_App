@@ -25,16 +25,8 @@ export class UploadFileComponent implements OnInit, AfterViewInit {
     private uploadFileService: UploadFileService,
     private deleteFileService: DeleteFileService
   ) {
-    this.deleteFileService.fileDeleted$
-      .subscribe(() => {
-        this.successMsg = true;
-        this.msg = 'File has been deleted sucessfully...'
-      });
-    this.deleteFileService.allFilesDeleted$
-      .subscribe(() => {
-        this.successMsg = true;
-        this.msg = 'All files have been deleted successfully...';
-      });
+    this.subscribeToDeleteFileObs();
+    this.subscribeToDeleteAllFilesObs();
   };
 
   ngOnInit(): void {
@@ -97,5 +89,35 @@ export class UploadFileComponent implements OnInit, AfterViewInit {
     //event.stopPropagation();
     //console.log('Submitted');
     //return false;
+  }
+
+  subscribeToDeleteFileObs() {
+    this.deleteFileService.fileDeleted$
+      .subscribe(
+        res => {
+          this.successMsg = true;
+          this.msg = res.Success;
+        },
+        err => {
+          let errMsg = err.error;
+
+          this.errorMsg = true;
+          this.msg = errMsg.Error;
+        });
+  }
+
+  subscribeToDeleteAllFilesObs() {
+    this.deleteFileService.allFilesDeleted$
+      .subscribe(
+        res => {
+          this.successMsg = true;
+          this.msg = res.Success;
+        },
+        err => {
+          let errMsg = err.error;
+
+          this.errorMsg = true;
+          this.msg = errMsg.Error;
+        });
   }
 }
