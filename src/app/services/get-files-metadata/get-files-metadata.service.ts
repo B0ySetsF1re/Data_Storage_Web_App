@@ -10,6 +10,6 @@ export class GetFilesMetadataService {
   constructor(private httpClient: HttpClient) { }
 
   getFilesMetaData() {
-    return this.httpClient.get<any>(`${this.baseUrl}/meta-data-content`);
+    return this.httpClient.get<any>(`${ this.baseUrl }/meta-data-content`);
   }
 }

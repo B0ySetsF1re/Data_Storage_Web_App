@@ -10,6 +10,6 @@ export class RenameFileService {
   constructor(private httpClient: HttpClient) { }
 
   renameFile(id: string, body: any) {
-    return this.httpClient.post<any>(`${this.baseUrl}${id}`, body);
+    return this.httpClient.post<any>(`${ this.baseUrl + id}`, body);
   }
 }

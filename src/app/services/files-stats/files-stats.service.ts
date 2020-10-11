@@ -10,6 +10,6 @@ export class FilesStatsService {
   constructor(private httpClient: HttpClient) { }
 
   getFilesStats() {
-    return this.httpClient.get<any>(`${this.baseUrl}`, { });
+    return this.httpClient.get<any>(`${ this.baseUrl }`, { });
   }
 }

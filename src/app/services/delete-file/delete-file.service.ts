@@ -14,16 +14,16 @@ export class DeleteFileService {
   constructor(private httpClient: HttpClient) { }
 
   deleteFile(id: any) {
-    return this.httpClient.post<any>(`${this.baseUrl}${this.deleteFileUrl}${id}`, { });
+    return this.httpClient.post<any>(`${ this.baseUrl + this.deleteFileUrl + id }`, { });
   }
 
   deleteAll() {
-    return this.httpClient.post<any>(`${this.baseUrl}${this.deleteAllFilesUrl}`, { });
+    return this.httpClient.post<any>(`${ this.baseUrl + this.deleteAllFilesUrl }`, { });
   }
 
   deleteMultiple(ids: Array<any>) {
     ids.forEach((id) => {
-      this.httpClient.post<any>(`${this.baseUrl}${this.deleteFileUrl}${id}`, { } )
+      this.httpClient.post<any>(`${ this.baseUrl + this.deleteFileUrl + id }`, { } )
         .subscribe(
           res => {
             /* *** */

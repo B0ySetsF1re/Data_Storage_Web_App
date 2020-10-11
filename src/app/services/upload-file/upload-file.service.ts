@@ -16,7 +16,7 @@ export class UploadFileService {
 
   uploadFile(formData: FormData) { // : Observable<HttpEvent<any>>
     // this.fileUploadedSource.next();
-    return this.httpClient.post<any>(`${this.baseUrl}/upload-file`, formData)
+    return this.httpClient.post<any>(`${ this.baseUrl }/upload-file`, formData)
       .pipe(
         tap(() => {
           this.fileUploadedSource.next();
