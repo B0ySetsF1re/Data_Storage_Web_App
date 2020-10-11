@@ -11,7 +11,7 @@ import { FileMetaData } from './file-metadata';
   selector: 'app-files-metadata',
   templateUrl: './files-metadata.component.html',
   styleUrls: ['./files-metadata.component.css'],
-  providers: [GetFilesMetadataService, DeleteFileService, RenameFileService]
+  providers: [GetFilesMetadataService]
 })
 export class FilesMetadataComponent implements OnInit {
   filesMetaData: FileMetaData[];
