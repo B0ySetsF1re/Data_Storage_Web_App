@@ -2,5 +2,5 @@
 node_modules
 
 # Environment variables
-src/app/environments/*
+src/environments/*
 *.env
