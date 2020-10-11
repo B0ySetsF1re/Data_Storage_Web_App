@@ -8,8 +8,7 @@ import { UploadFileService } from '../../services/upload-file/upload-file.servic
 @Component({
   selector: 'upload-file',
   templateUrl: './upload-file.component.html',
-  styleUrls: ['./upload-file.component.css'],
-  providers: [UploadFileService]
+  styleUrls: ['./upload-file.component.css']
 })
 export class UploadFileComponent implements OnInit, AfterViewInit {
   title = '';
