@@ -66,6 +66,10 @@ export class UploadFileComponent implements OnInit, AfterViewInit {
       this.successMsg = false;
     }
 
+    if(this.errorMsg == true) {
+      this.errorMsg = false;
+    }
+
     const formData = new FormData();
 
     formData.append('file', this.uploadForm.get('upload').value);
@@ -78,10 +82,15 @@ export class UploadFileComponent implements OnInit, AfterViewInit {
           this.fileUploadLabel.nativeElement.innerHTML = 'Choose file...';
           this.uploadForm.get('upload').setValue('');
           this.msg = res.Success;
-          console.log(res);
         },
         err => {
-          console.log(err);
+          let errMsg = err.error;
+
+          this.uploadInProgress = false;
+          this.errorMsg = true;
+          this.fileUploadLabel.nativeElement.innerHTML = 'Choose file...';
+          this.uploadForm.get('upload').setValue('');
+          this.msg = errMsg.Error;
         }
       );
 
