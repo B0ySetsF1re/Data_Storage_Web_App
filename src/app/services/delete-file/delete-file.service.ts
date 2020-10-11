@@ -1,3 +1,5 @@
+import { environment } from '../../../environments/environment';
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -10,9 +12,9 @@ import { FileMetaData } from '../../components/files-metadata/file-metadata';
   providedIn: 'root'
 })
 export class DeleteFileService {
-  private baseUrl = 'http://localhost:3000/api/data-storage/';
-  private deleteFileUrl = 'delete-uploaded-file/';
-  private deleteAllFilesUrl = 'delete-all-uploaded-files';
+  private baseUrl = environment.API_URL;
+  private deleteFileUrl = environment.API_POST.delete_uploaded_file;
+  private deleteAllFilesUrl = environment.API_POST.delete_all_uploaded_files;
 
   private fileDeletedSource = new Subject<any>();
   private allFilesDeletedSource = new Subject<any>();

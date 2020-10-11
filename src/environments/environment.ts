@@ -3,7 +3,19 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  API_URL: 'http://localhost:3000/api/data-storage',
+  API_GET: {
+    meta_data_content: "/meta-data-content",
+    files_stats: "/files-stats",
+    download_file: "/download-file/"
+  },
+  API_POST: {
+    upload_file: "/upload-file",
+    rename_uploaded_file: "/rename-uploaded-file/",
+    delete_uploaded_file: "/delete-uploaded-file/",
+    delete_all_uploaded_files: "/delete-all-uploaded-files/"
+  }
 };
 
 /*

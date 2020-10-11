@@ -1,3 +1,5 @@
+import { environment } from '../../../environments/environment';
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -5,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class FilesStatsService {
-  private baseUrl = 'http://localhost:3000/api/data-storage/files-stats';
+  private baseUrl = environment.API_URL + environment.API_GET.files_stats;
 
   constructor(private httpClient: HttpClient) { }
 

@@ -1,3 +1,5 @@
+import { environment } from '../../../environments/environment';
+
 import { Injectable, Output, EventEmitter } from '@angular/core'
 import { HttpClient } from '@angular/common/http'; // HttpHeaders, HttpRequest, HttpEvent
 // import { Observable } from 'rxjs';
@@ -7,7 +9,7 @@ import { Subject } from 'rxjs';
 
 @Injectable()
 export class UploadFileService {
-  private baseUrl = 'http://localhost:3000/api/data-storage';
+  private baseUrl = environment.API_URL + environment.API_POST.upload_file;
   private fileUploadedSource = new Subject<any>(); // Observable source of any type
 
   fileUploaded$ = this.fileUploadedSource.asObservable(); // Observable stream of any type
@@ -16,7 +18,7 @@ export class UploadFileService {
 
   uploadFile(formData: FormData) { // : Observable<HttpEvent<any>>
     // this.fileUploadedSource.next();
-    return this.httpClient.post<any>(`${ this.baseUrl }/upload-file`, formData)
+    return this.httpClient.post<any>(`${ this.baseUrl }`, formData)
       .pipe(
         tap(
           res => {
