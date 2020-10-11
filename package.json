@@ -1,7 +1,7 @@
 {
   "name": "",
   "version": "1.0.0",
-  "description": "A simple data storage web application using micro-services architecture (client-side)",
+  "description": "Simple data storage web app client using micro-services architecture",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
