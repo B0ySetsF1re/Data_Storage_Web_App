@@ -17,7 +17,7 @@ export class UploadFileComponent implements OnInit, AfterViewInit {
   msg = '';
   uploadFileLabel = "Choose file...";
   uploadInProgress = false;
-  uploadFileSuccessMsg = false;
+  successMsg = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -26,12 +26,12 @@ export class UploadFileComponent implements OnInit, AfterViewInit {
   ) {
     this.deleteFileService.fileDeleted$
       .subscribe(() => {
-        this.uploadFileSuccessMsg = true;
+        this.successMsg = true;
         this.msg = 'File has been deleted sucessfully...'
       });
     this.deleteFileService.allFilesDeleted$
       .subscribe(() => {
-        this.uploadFileSuccessMsg = true;
+        this.successMsg = true;
         this.msg = 'All files have been deleted successfully...';
       });
   };
@@ -61,8 +61,8 @@ export class UploadFileComponent implements OnInit, AfterViewInit {
     event.preventDefault();
     this.uploadInProgress = true;
 
-    if(this.uploadFileSuccessMsg == true) {
-      this.uploadFileSuccessMsg = false;
+    if(this.successMsg == true) {
+      this.successMsg = false;
     }
 
     const formData = new FormData();
@@ -73,7 +73,7 @@ export class UploadFileComponent implements OnInit, AfterViewInit {
       .subscribe(
         res => {
           this.uploadInProgress = false;
-          this.uploadFileSuccessMsg = true;
+          this.successMsg = true;
           this.fileUploadLabel.nativeElement.innerHTML = 'Choose file...';
           this.uploadForm.get('upload').setValue('');
           this.msg = res.Success;

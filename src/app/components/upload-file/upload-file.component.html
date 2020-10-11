@@ -6,7 +6,7 @@
       <form (submit)="uploadFile">
         <div class="form-group row justify-content-center">
 
-          <div *ngIf="uploadFileSuccessMsg" class="alert alert-success col-sm-9" role="alert">
+          <div *ngIf="successMsg" class="alert alert-success col-sm-9" role="alert">
             {{ msg }}
           </div>
 
