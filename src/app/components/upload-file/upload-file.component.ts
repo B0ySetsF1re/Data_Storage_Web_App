@@ -43,6 +43,16 @@ export class UploadFileComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(){ }
 
+  msgsStatusCheck() {
+    if(this.successMsg == true) {
+      this.successMsg = false;
+    }
+
+    if(this.errorMsg == true) {
+      this.errorMsg = false;
+    }
+  }
+
   onFileSelect(event: any) {
     if(event.target.files.length > 0) {
       const file = event.target.files[0];
@@ -54,14 +64,7 @@ export class UploadFileComponent implements OnInit, AfterViewInit {
   uploadFile(event: any) {
     event.preventDefault();
     this.uploadInProgress = true;
-
-    if(this.successMsg == true) {
-      this.successMsg = false;
-    }
-
-    if(this.errorMsg == true) {
-      this.errorMsg = false;
-    }
+    this.msgsStatusCheck();
 
     const formData = new FormData();
 
@@ -90,61 +93,77 @@ export class UploadFileComponent implements OnInit, AfterViewInit {
 
   subscribeToDeleteFileObs() {
     this.deleteFileService.fileDeleted$
-      .subscribe(
-        res => {
-          this.successMsg = true;
-          this.msg = res.Success;
-        },
-        err => {
-          let errMsg = err.error;
+    .subscribe(
+      res => {
+        this.msgsStatusCheck();
+
+        if(res.error) {
+          let errMsg = res.error;
 
           this.errorMsg = true;
           this.msg = errMsg.Error;
-        });
+        } else {
+          this.successMsg = true;
+          this.msg = res.Success;
+        }
+      }
+    );
   }
 
   subscribeToDeleteAllFilesObs() {
     this.deleteFileService.allFilesDeleted$
-      .subscribe(
-        res => {
-          this.successMsg = true;
-          this.msg = res.Success;
-        },
-        err => {
-          let errMsg = err.error;
+    .subscribe(
+      res => {
+        this.msgsStatusCheck();
+
+        if(res.error) {
+          let errMsg = res.error;
 
           this.errorMsg = true;
           this.msg = errMsg.Error;
-        });
+        } else {
+          this.successMsg = true;
+          this.msg = res.Success;
+        }
+      }
+    );
   }
 
   subscribeToSelectedDeletedFilesObs() {
     this.deleteFileService.selectedFilesDeleted$
-      .subscribe(
-        res => {
-          this.successMsg = true;
-          this.msg = res.Success;
-        },
-        err => {
-          let errMsg = err.error;
+    .subscribe(
+      res => {
+        this.msgsStatusCheck();
+
+        if(res.error) {
+          let errMsg = res.error;
 
           this.errorMsg = true;
           this.msg = errMsg.Error;
-        });
+        } else {
+          this.successMsg = true;
+          this.msg = res.Success;
+        }
+      }
+    );
   }
 
   subscribeToRenamedFileObs() {
     this.renameFileService.fileRenamed$
       .subscribe(
         res => {
-          this.successMsg = true;
-          this.msg = res.Success;
-        },
-        err => {
-          let errMsg = err.error;
+          this.msgsStatusCheck();
 
-          this.errorMsg = true;
-          this.msg = errMsg.Error;
-        });
+          if(res.error) {
+            let errMsg = res.error;
+
+            this.errorMsg = true;
+            this.msg = errMsg.Error;
+          } else {
+            this.successMsg = true;
+            this.msg = res.Success;
+          }
+        }
+      );
   }
 }
