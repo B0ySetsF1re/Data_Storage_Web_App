@@ -39,6 +39,7 @@ export class UploadFileComponent implements OnInit, AfterViewInit {
     });
   }
 
+  @ViewChild('fileUploadInput') fileUploadInput: ElementRef;
   @ViewChild('fileUploadLabel') fileUploadLabel: ElementRef;
 
   ngAfterViewInit(){ }
@@ -75,8 +76,8 @@ export class UploadFileComponent implements OnInit, AfterViewInit {
         res => {
           this.uploadInProgress = false;
           this.successMsg = true;
+          this.fileUploadInput.nativeElement.value = '';
           this.fileUploadLabel.nativeElement.innerHTML = 'Choose file...';
-          this.uploadForm.get('upload').setValue('');
           this.msg = res.Success;
         },
         err => {
@@ -84,8 +85,8 @@ export class UploadFileComponent implements OnInit, AfterViewInit {
 
           this.uploadInProgress = false;
           this.errorMsg = true;
+          this.fileUploadInput.nativeElement.value = '';
           this.fileUploadLabel.nativeElement.innerHTML = 'Choose file...';
-          this.uploadForm.get('upload').setValue('');
           this.msg = errMsg.Error;
         }
       );
