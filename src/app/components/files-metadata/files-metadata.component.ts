@@ -99,7 +99,6 @@ export class FilesMetadataComponent implements OnInit {
     const value = idAttr.nodeValue;
 
     this.selectedFileIdToRename = value;
-    console.log(this.selectedFileIdToRename);
   }
 
   renameFileOnSubmit(renameFileForm: NgForm) {
