@@ -1,4 +1,4 @@
-import { Component, OnInit, Directive, HostListener } from '@angular/core';
+import { Component, OnInit, Directive, HostListener, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, NgForm } from '@angular/forms';
 
 import { UploadFileService } from '../../services/upload-file/upload-file.service';
@@ -13,7 +13,7 @@ import { FileMetaData } from './file-metadata';
   styleUrls: ['./files-metadata.component.css'],
   providers: [GetFilesMetadataService]
 })
-export class FilesMetadataComponent implements OnInit {
+export class FilesMetadataComponent implements OnInit, AfterViewInit {
   filesMetaData: FileMetaData[];
 
   private downloadFileBaseUrl = 'http://localhost:3000/api/data-storage/download-file/';
@@ -51,6 +51,10 @@ export class FilesMetadataComponent implements OnInit {
   }
 
   ngOnInit(): void { }
+
+  ngAfterViewInit(){ }
+
+  @ViewChild('newNameInput') newNameInput: ElementRef;
 
   addFilesMetaData() {
     this.getFilesMetaDataService.getFilesMetaData()
@@ -103,5 +107,6 @@ export class FilesMetadataComponent implements OnInit {
 
   renameFileOnSubmit(renameFileForm: NgForm) {
     this.renameFileService.renameFile(this.selectedFileIdToRename, renameFileForm.value).subscribe();
+    this.newNameInput.nativeElement.value ='';
   }
 }
