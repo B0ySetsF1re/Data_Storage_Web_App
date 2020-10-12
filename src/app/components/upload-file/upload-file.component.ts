@@ -118,8 +118,8 @@ export class UploadFileComponent implements OnInit, AfterViewInit {
         });
   }
 
-  subscribeToRenamedFileObs() {
-    this.renameFileService.fileRenamed$
+  subscribeToSelectedDeletedFilesObs() {
+    this.deleteFileService.selectedFilesDeleted$
       .subscribe(
         res => {
           this.successMsg = true;
@@ -133,8 +133,8 @@ export class UploadFileComponent implements OnInit, AfterViewInit {
         });
   }
 
-  subscribeToSelectedDeletedFilesObs() {
-    this.deleteFileService.selectedFilesDeleted$
+  subscribeToRenamedFileObs() {
+    this.renameFileService.fileRenamed$
       .subscribe(
         res => {
           this.successMsg = true;
