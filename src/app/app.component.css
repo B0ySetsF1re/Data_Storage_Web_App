@@ -43,3 +43,11 @@ ul.nav.nav-pills li.nav-item a.nav-link:hover {
   transition-timing-function: ease-in-out;
   transition-delay: 0s;
 }
+
+ul.list-unstyled li a.disabled {
+  color: #6c757d !important;
+}
+
+ul.list-unstyled li a.disabled:hover {
+  text-decoration: none;
+}
