@@ -79,6 +79,8 @@ export class UploadFileComponent implements OnInit, AfterViewInit {
           this.fileUploadInput.nativeElement.value = '';
           this.fileUploadLabel.nativeElement.innerHTML = 'Choose file...';
           this.msg = res.Success;
+          this.uploadForm.get('upload').reset();
+          formData.delete('file');
         },
         err => {
           let errMsg = err.error;
